@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Wrapper from "./components/Wrapper";
-import Image from "./components/Image"
+import Wrapper from "./components/wrapper";
+import Image from "./components/image"
 import "./ClickyGame.css";
 import images from "./images.json";
 
@@ -26,6 +26,7 @@ class ClickyGame extends Component {
       }
       // if it's a winner
       if (this.state.score >= this.state.totalScore) {
+        // eslint-disable-next-line react/no-direct-mutation-state
         this.state.topScore = this.state.score + 1;
       }
       this.setState({ images, imageClickedId, score: imageClickedId.length, totalScore: this.state.topScore });
@@ -38,6 +39,7 @@ class ClickyGame extends Component {
     } else {
       //lost game over
       if (this.state.score < this.state.totalScore) {
+        // eslint-disable-next-line react/no-direct-mutation-state
         this.state.topScore = this.state.totalScore;
       }
       this.setState({ imageClickedId: [], score: 0, totalScore: this.state.topScore });
